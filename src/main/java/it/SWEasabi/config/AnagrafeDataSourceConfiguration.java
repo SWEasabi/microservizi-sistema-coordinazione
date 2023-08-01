@@ -17,8 +17,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import it.SWEasabi.modelli.anagrafica.LampAnagrafica;
-
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
@@ -30,14 +28,14 @@ public class AnagrafeDataSourceConfiguration {
 	@Primary
 	@Bean(name="anagrafeProperties")
 	@ConfigurationProperties("spring.datasource.anagrafe")
-	DataSourceProperties anagrafeDataSourceProperties() {
+	DataSourceProperties dataSourceProperties() {
 		return new DataSourceProperties();
 	}
 	
 	@Primary
 	@Bean(name="anagrafeDatasource")
 	@ConfigurationProperties(prefix = "spring.datasource.anagrafe")
-	public DataSource anagrafeDataSource(@Qualifier("anagrafeProperties") DataSourceProperties properties) {
+	public DataSource dataSource(@Qualifier("anagrafeProperties") DataSourceProperties properties) {
 	    return properties.initializeDataSourceBuilder().build();
 	}
 	

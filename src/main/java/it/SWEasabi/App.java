@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  *
  */
 @SpringBootApplication
-@EntityScan("com.SWEasabi.modelli.anagrafica")
 public class App 
 {
     public static void main( String[] args )
