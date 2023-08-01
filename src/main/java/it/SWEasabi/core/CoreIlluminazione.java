@@ -3,7 +3,7 @@ package it.SWEasabi.core;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import it.SWEasabi.modelli.anagrafica.LampAnagrafica;
-import it.SWEasabi.repositories.LampAnagraficaRepository;
+import it.SWEasabi.repositories.illuminazione.LampAnagraficaRepository;
 
 public class CoreIlluminazione {
 	

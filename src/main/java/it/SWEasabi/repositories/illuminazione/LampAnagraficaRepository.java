@@ -1,4 +1,4 @@
-package it.SWEasabi.repositories;
+package it.SWEasabi.repositories.illuminazione;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
