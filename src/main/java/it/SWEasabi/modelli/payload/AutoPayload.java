@@ -9,17 +9,17 @@ import it.SWEasabi.modelli.illuminazione.LampIlluminazione;
 public class AutoPayload extends Payload
 {
     private long timestamp;
-    private int idSensore, statoSensore;
+    private long idSensore, statoSensore;
     private AreaAnagrafica area;
     private ArrayList<LampAnagrafica> lamps;
 
-    public int getIdSensore() { return idSensore; }
-    public int getStatoSensore() { return statoSensore; }
+    public long getIdSensore() { return idSensore; }
+    public long getStatoSensore() { return statoSensore; }
     public long getTimeStamp() { return timestamp; }
     public AreaAnagrafica getArea() { return area; }
     public ArrayList<LampAnagrafica> getLamps() { return lamps; }
 
-    public AutoPayload(int _idSensore, int _statoSensore, long _timestamp)
+    public AutoPayload(long _idSensore, long _statoSensore, long _timestamp)
     {
         idSensore = _idSensore;
         statoSensore = _statoSensore;
