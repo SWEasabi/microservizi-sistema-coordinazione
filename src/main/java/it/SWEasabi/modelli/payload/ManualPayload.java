@@ -1,23 +1,22 @@
 package it.SWEasabi.modelli.payload;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import it.SWEasabi.modelli.illuminazione.LampIlluminazione;
+import it.SWEasabi.modelli.illuminazione.ModificaIlluminazione;
 
 public class ManualPayload extends Payload
 {
-    private int idLamp, valore;
-    private long timestamp;
+    private long idLamp;
+    private int valore;
 
-    public int getIdLampione() { return idLamp; }
+    public long getIdLampione() { return idLamp; }
     public int getValore() { return valore; }
-    public long getTimeStamp() { return timestamp; }
 
-    public ManualPayload(int _idLamp, int _valore, long _timestamp)
+    public ManualPayload(long _idLamp, int _valore)
     {
         idLamp = _idLamp;
         valore = _valore;
-        timestamp = _timestamp;
     }
 
     @Override
@@ -27,10 +26,10 @@ public class ManualPayload extends Payload
         status = PayloadStatus.Completed; // se qualcosa è andato storto, PayloadStatus.Error;
     }
     @Override
-    public ArrayList<LampIlluminazione> analyze()
+    public List<ModificaIlluminazione> analyze()
     {
-        ArrayList<LampIlluminazione> modifiche = new ArrayList<>();
-        modifiche.add(new LampIlluminazione(idLamp, valore, timestamp));
+        List<ModificaIlluminazione> modifiche = new ArrayList<>();
+        modifiche.add(new ModificaIlluminazione(idLamp, valore));
         return modifiche;
     }
 }

@@ -1,52 +1,71 @@
 package it.SWEasabi.modelli.payload;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import it.SWEasabi.core.CoreIlluminazione;
 import it.SWEasabi.modelli.anagrafica.AreaAnagrafica;
 import it.SWEasabi.modelli.anagrafica.LampAnagrafica;
-import it.SWEasabi.modelli.illuminazione.LampIlluminazione;
+import it.SWEasabi.modelli.illuminazione.ModificaIlluminazione;
 
 public class AutoPayload extends Payload
 {
-    private long timestamp;
+    @Autowired
+    CoreIlluminazione coreIlluminazione;
     private long idSensore, statoSensore;
     private AreaAnagrafica area;
-    private ArrayList<LampAnagrafica> lamps;
+    private List<LampAnagrafica> lamps;
 
     public long getIdSensore() { return idSensore; }
     public long getStatoSensore() { return statoSensore; }
-    public long getTimeStamp() { return timestamp; }
     public AreaAnagrafica getArea() { return area; }
-    public ArrayList<LampAnagrafica> getLamps() { return lamps; }
+    public List<LampAnagrafica> getLamps() { return lamps; }
 
-    public AutoPayload(long _idSensore, long _statoSensore, long _timestamp)
+    public AutoPayload(long _idSensore, long _statoSensore)
     {
         idSensore = _idSensore;
         statoSensore = _statoSensore;
-        timestamp = _timestamp;
         area = null;
         lamps = null;
     }
     @Override
     void completePayload()
     {
-        // chiedo all'anagrafica i dati dell'area in cui è il sensore con una chiamata API
-        // chiedo all'anagrafica i dati dei lampioni in quell'area con una chiamata API
-
-        // ho completato il payload
-
-        status = PayloadStatus.Completed; // se qualcosa è andato storto, PayloadStatus.Error;
+        // chiedo all'anagrafica i dati dell'area in cui è il sensore
+        area = coreIlluminazione.getAreaFromSensorId(idSensore);
+        if(area == null)
+        {
+            status = PayloadStatus.Error;
+        }
+        else
+        {
+            // chiedo all'anagrafica i dati dei lampioni in quell'area
+            lamps = coreIlluminazione.getLampsInArea(area.getId());
+            if(lamps == null)
+            {
+                status = PayloadStatus.Error;
+            }
+            else
+            {
+                // ho completato il payload
+                status = PayloadStatus.Completed; // se qualcosa è andato storto, PayloadStatus.Error;
+            }
+        }
     }
     @Override
-    public ArrayList<LampIlluminazione> analyze()
+    public List<ModificaIlluminazione> analyze()
     {
-        ArrayList<LampIlluminazione> modifiche = new ArrayList<>();
+        List<ModificaIlluminazione> modifiche = new ArrayList<ModificaIlluminazione>();
         if(area.getModAutomatica()) // se sono in modalità automatica
         {
             int nuovoValore = statoSensore == 0 ? area.getLvlInf() : area.getLvlSup();
             for(LampAnagrafica lampAnagrafica : lamps)
             {
-                modifiche.add(new LampIlluminazione(lampAnagrafica.getId(), nuovoValore, timestamp));
+                modifiche.add(new ModificaIlluminazione(lampAnagrafica.getId(), nuovoValore));
             }
         }
         return modifiche;

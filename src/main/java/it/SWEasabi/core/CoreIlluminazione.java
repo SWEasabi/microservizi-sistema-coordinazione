@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import it.SWEasabi.modelli.anagrafica.AreaAnagrafica;
 import it.SWEasabi.modelli.anagrafica.LampAnagrafica;
@@ -18,6 +20,7 @@ import it.SWEasabi.repositories.illuminazione.SensoreRepository;
 import it.SWEasabi.repositories.logging.LoggingRepository;
 import jakarta.transaction.Transactional;
 
+@Service
 public class CoreIlluminazione {
 	
 	@Autowired
@@ -35,13 +38,29 @@ public class CoreIlluminazione {
 	@Autowired
 	AreaRepository areaRepo;
 	
-	@Transactional
 	public boolean setIlluminazione(long id, int value) {
-		try {
+		try
+		{
 			LampAnagrafica lamp = lampRepo.findById(id);
 			lamp.setLuminosita(value);
 			lampRepo.save(lamp);
-			Log temp = new Log(lamp.getId(),Instant.now().toEpochMilli()/1000,value, "lampione");
+			//Log temp = new Log(lamp.getId(),Instant.now().toEpochMilli()/1000,value, "lampione");
+			//logRepo.save(temp);
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	/*
+	public boolean setLogSensore(long id, int value)
+	{
+		try
+		{
+			Log temp = new Log(id, Instant.now().toEpochMilli()/1000, value, "sensore");
 			logRepo.save(temp);
 			return true;
 		}
@@ -51,6 +70,7 @@ public class CoreIlluminazione {
 		}
 		return false;
 	}
+	*/
 	
 	public LampAnagrafica getById(long id)
 	{

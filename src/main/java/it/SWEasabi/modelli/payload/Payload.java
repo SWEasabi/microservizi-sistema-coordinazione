@@ -1,13 +1,14 @@
 package it.SWEasabi.modelli.payload;
 
-import java.util.ArrayList;
-import it.SWEasabi.modelli.illuminazione.LampIlluminazione;
+import java.util.List;
+
+import it.SWEasabi.modelli.illuminazione.ModificaIlluminazione;
 
 public abstract class Payload implements Runnable
 {
     protected PayloadStatus status;
     abstract void completePayload();
-    public abstract ArrayList<LampIlluminazione> analyze();
+    public abstract List<ModificaIlluminazione> analyze();
     @Override
     public void run()
     {
