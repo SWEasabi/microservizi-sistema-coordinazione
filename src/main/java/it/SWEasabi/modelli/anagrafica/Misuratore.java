@@ -25,6 +25,18 @@ public class Misuratore {
 	@OneToOne(mappedBy = "misuratore", cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private LampAnagrafica lampione;
+	
+	@OneToOne(mappedBy = "misuratore", cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private SensoreAnagrafica sensore;
+
+	public SensoreAnagrafica getSensore() {
+		return sensore;
+	}
+
+	public void setSensore(SensoreAnagrafica sensore) {
+		this.sensore = sensore;
+	}
 
 	public void setId(long id) {
 		this.id = id;
@@ -99,4 +111,5 @@ public class Misuratore {
         return false;
 	}
 }
+
 

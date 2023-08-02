@@ -2,6 +2,8 @@ package it.SWEasabi.modelli.anagrafica;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
@@ -14,8 +16,9 @@ public class LampAnagrafica
 {
 	@Id
 	@Column(name="idmisuratore")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	private int voltaggio;
+	private int wattaggio;
 	private int luminosita;
 	
 	@OneToOne
@@ -33,27 +36,27 @@ public class LampAnagrafica
 
 	public LampAnagrafica()
 	{
-		this.voltaggio=0;
+		this.wattaggio=0;
 		this.luminosita=0;
 	}
 	
 	public LampAnagrafica(int voltaggio, int luminosita)
 	{
-		this.voltaggio=voltaggio;
+		this.wattaggio=voltaggio;
 		this.luminosita=luminosita;
 	}
 	
 	public long getId() {
 		return id;
 	}
-	public int getVoltaggio() {
-		return voltaggio;
+	public int getWattaggio() {
+		return wattaggio;
 	}
 	public void setId(long id) {
 		this.id=id;
 	}
-	public void setVoltaggio(int voltaggio) {
-		this.voltaggio = voltaggio;
+	public void setWattaggio(int wattaggio) {
+		this.wattaggio = wattaggio;
 	}
 	
 	@Override
@@ -68,7 +71,7 @@ public class LampAnagrafica
         }
 
         final LampAnagrafica other = (LampAnagrafica) obj;
-        if (this.id == other.getId() && this.voltaggio == other.getVoltaggio() 
+        if (this.id == other.getId() && this.wattaggio == other.getWattaggio()
         		&& this.luminosita == other.getLuminosita()
         		&& this.misuratore.equals(other.getMisuratore())) {
         		return true;

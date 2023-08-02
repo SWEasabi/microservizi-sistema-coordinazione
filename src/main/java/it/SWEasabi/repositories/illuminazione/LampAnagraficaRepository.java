@@ -8,5 +8,4 @@ import it.SWEasabi.modelli.anagrafica.LampAnagrafica;
 
 public interface LampAnagraficaRepository extends JpaRepository<LampAnagrafica, Long> {
 	LampAnagrafica findById(long id);
-	//List<LampAnagrafica> findByIdarea(long id);
 }
