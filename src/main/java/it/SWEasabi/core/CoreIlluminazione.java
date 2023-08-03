@@ -20,7 +20,6 @@ import it.SWEasabi.repositories.illuminazione.SensoreRepository;
 import it.SWEasabi.repositories.logging.LoggingRepository;
 import jakarta.transaction.Transactional;
 
-@Service
 public class CoreIlluminazione {
 	
 	@Autowired

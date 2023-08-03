@@ -14,7 +14,6 @@ import it.SWEasabi.modelli.illuminazione.ModificaIlluminazione;
 
 public class AutoPayload extends Payload
 {
-    @Autowired
     CoreIlluminazione coreIlluminazione;
     private long idSensore, statoSensore;
     private AreaAnagrafica area;
@@ -25,12 +24,13 @@ public class AutoPayload extends Payload
     public AreaAnagrafica getArea() { return area; }
     public List<LampAnagrafica> getLamps() { return lamps; }
 
-    public AutoPayload(long _idSensore, long _statoSensore)
+    public AutoPayload(long _idSensore, long _statoSensore, CoreIlluminazione coreIlluminazione)
     {
         idSensore = _idSensore;
         statoSensore = _statoSensore;
         area = null;
         lamps = null;
+        this.coreIlluminazione=coreIlluminazione;
     }
     @Override
     void completePayload()

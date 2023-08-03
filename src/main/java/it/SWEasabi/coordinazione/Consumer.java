@@ -15,7 +15,6 @@ import it.SWEasabi.modelli.payload.PayloadThread;
 
 public class Consumer implements Runnable
 {
-    @Autowired
     CoreIlluminazione coreIlluminazione;
     private final PayloadQueue payloadQueue;
     private boolean stop = false;
@@ -30,6 +29,9 @@ public class Consumer implements Runnable
     public void setMqttClient(MqttClient _client)
     {
         client = _client;
+    }
+    public void setCore(CoreIlluminazione core) {
+    	this.coreIlluminazione=core;
     }
     @Override
     public void run()

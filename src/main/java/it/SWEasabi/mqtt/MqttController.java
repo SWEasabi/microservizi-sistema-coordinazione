@@ -19,21 +19,44 @@ public class MqttController implements MqttCallback
     private Consumer consumer;
     private Producer producer;
     
-    public MqttController(Consumer _consumer, Producer _producer)
+    public MqttController(
+    		//Consumer _consumer, Producer _producer
+    		)
     {
-        consumer = _consumer;
-        producer = _producer;
+        //consumer = _consumer;
+        //producer = _producer;
 
         // mqtt
-        setupMqtt();
+        //setupMqtt();
 
         // run consumer
-        producer.setMqttClient(client);
-        consumer.setMqttClient(client);
-        consumer.run();
+        //producer.setMqttClient(client);
+        //consumer.setMqttClient(client);
+        //consumer.run();
+    }
+    public void StartConsumer() {
+    	consumer.run();
+    }
+    public void setConsumer(Consumer consumer) {
+    	this.consumer=consumer;
+    }
+    public void setProducer(Producer producer) {
+    	this.producer=producer;
+    }
+    public void setMqttClient(MqttClient client) {
+    	this.client=client;
+    }
+    public Producer getProducer() {
+    	return producer;
+    }
+    public Consumer getConsumer() {
+    	return consumer;
+    }
+    public MqttClient getClient() {
+    	return client;
     }
 
-    public void setupMqtt()
+    /*public void setupMqtt()
     {
         try
         {
@@ -46,7 +69,7 @@ public class MqttController implements MqttCallback
         {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Override
     public void connectionLost(Throwable cause) {

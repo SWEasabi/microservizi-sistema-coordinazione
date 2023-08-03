@@ -4,7 +4,10 @@ import java.nio.charset.StandardCharsets;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import it.SWEasabi.core.CoreIlluminazione;
+import it.SWEasabi.modelli.anagrafica.AreaAnagrafica;
 import it.SWEasabi.modelli.payload.AutoPayload;
 import it.SWEasabi.modelli.payload.ManualPayload;
 import it.SWEasabi.modelli.payload.PayloadQueue;
@@ -12,6 +15,8 @@ import it.SWEasabi.modelli.payload.PayloadThread;
 
 public class Producer
 {
+	CoreIlluminazione core;
+	
     private MqttClient client;
     private final PayloadQueue payloadQueue;
     private final String topicLogging;
@@ -24,11 +29,15 @@ public class Producer
     {
         client = _client;
     }
+    public void setCore(CoreIlluminazione core) {
+    	this.core=core;
+    }
     public void OnSensorMessageReceived(long idSensore, int stato)
     {
         // mando al sistema di logging
         try
         {
+        	//AreaAnagrafica area = this.core.getAreaFromSensorId(3);
             MqttMessage loggingResponse = new MqttMessage();
             String str2 = "{'id':" + idSensore + ", valore':" + stato + ", 'tipo': 'sensore'}";
             loggingResponse.setPayload(str2.getBytes(StandardCharsets.UTF_8));
@@ -39,7 +48,7 @@ public class Producer
             System.out.println(e.getMessage());
         }
 
-        PayloadThread payload = new PayloadThread(new AutoPayload(idSensore, idSensore));
+        PayloadThread payload = new PayloadThread(new AutoPayload(idSensore, idSensore,core));
         payloadQueue.add(payload);
         payloadQueue.notifyAllForEmpty();
     }
