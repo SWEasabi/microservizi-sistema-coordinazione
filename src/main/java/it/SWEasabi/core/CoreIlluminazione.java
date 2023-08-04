@@ -1,24 +1,18 @@
 package it.SWEasabi.core;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import it.SWEasabi.modelli.anagrafica.AreaAnagrafica;
 import it.SWEasabi.modelli.anagrafica.LampAnagrafica;
 import it.SWEasabi.modelli.anagrafica.Misuratore;
 import it.SWEasabi.modelli.anagrafica.SensoreAnagrafica;
-import it.SWEasabi.modelli.logging.Log;
 import it.SWEasabi.repositories.illuminazione.AreaRepository;
 import it.SWEasabi.repositories.illuminazione.LampAnagraficaRepository;
 import it.SWEasabi.repositories.illuminazione.MisuratoreRepository;
 import it.SWEasabi.repositories.illuminazione.SensoreRepository;
-import it.SWEasabi.repositories.logging.LoggingRepository;
-import jakarta.transaction.Transactional;
 
 public class CoreIlluminazione {
 	
@@ -27,9 +21,6 @@ public class CoreIlluminazione {
 	
 	@Autowired
 	MisuratoreRepository misRepo;
-	
-	@Autowired
-	LoggingRepository logRepo;
 	
 	@Autowired
 	SensoreRepository sensorRepo;

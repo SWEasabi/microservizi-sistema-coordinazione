@@ -14,9 +14,12 @@ public class AreaAnagrafica
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    private int lvlInf, lvlSup;
+	@Column(name="lvlinf")
+    private int lvlInf;
+	@Column(name="lvlsup")
+    private int lvlSup;
     private String nome;
-    @Column(name="autoMode")
+    @Column(name="automode")
     private boolean modAutomatica;
     public AreaAnagrafica() {
     	id=0;
