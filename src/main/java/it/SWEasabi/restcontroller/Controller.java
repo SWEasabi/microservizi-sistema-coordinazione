@@ -11,28 +11,9 @@ import it.SWEasabi.mqtt.MqttController;
 
 @RestController
 public class Controller {
-	
-	//@Autowired
-	//CoreIlluminazione coreIlluminazione;
 
 	@Autowired
 	MqttController mqttController;
-	
-	/*@PostMapping("/start")
-	public boolean Test(){
-		try {
-			
-			return true;
-		}
-		catch(Exception e) {
-			return false;
-		}
-	}*/
-	
-	@GetMapping("/test")
-	public String test(){
-		return "cucu";
-	}
 	
 	@PostMapping("/setIlluminazione/{idLamp}/{value}")
 	public boolean SetIlluminazione(@PathVariable long idLamp, @PathVariable int value)
