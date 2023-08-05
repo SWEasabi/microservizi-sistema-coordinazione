@@ -4,10 +4,8 @@ import java.nio.charset.StandardCharsets;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import it.SWEasabi.core.CoreIlluminazione;
-import it.SWEasabi.modelli.anagrafica.AreaAnagrafica;
 import it.SWEasabi.modelli.payload.AutoPayload;
 import it.SWEasabi.modelli.payload.ManualPayload;
 import it.SWEasabi.modelli.payload.PayloadQueue;
@@ -48,7 +46,7 @@ public class Producer
             System.out.println(e.getMessage());
         }
 
-        PayloadThread payload = new PayloadThread(new AutoPayload(idSensore, idSensore,core));
+        PayloadThread payload = new PayloadThread(new AutoPayload(idSensore, stato, core));
         payloadQueue.add(payload);
         payloadQueue.notifyAllForEmpty();
     }

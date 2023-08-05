@@ -4,9 +4,7 @@ import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
-import it.SWEasabi.modelli.anagrafica.AreaAnagrafica;
 import it.SWEasabi.modelli.payload.PayloadQueue;
 import it.SWEasabi.mqtt.MqttController;
 import it.SWEasabi.coordinazione.Consumer;

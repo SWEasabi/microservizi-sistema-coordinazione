@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import it.SWEasabi.core.CoreIlluminazione;
 import it.SWEasabi.modelli.illuminazione.ModificaIlluminazione;
