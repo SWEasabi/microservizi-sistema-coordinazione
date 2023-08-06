@@ -14,10 +14,8 @@ public class Controller {
 	MqttController mqttController;
 	
 	@PostMapping("/setIlluminazione/{idLamp}/{value}")
-	public boolean SetIlluminazione(@PathVariable long idLamp, @PathVariable int value)
+	public void SetIlluminazione(@PathVariable long idLamp, @PathVariable int value)
 	{
-		return false;
-		//mqttController.apiArrived(idLamp, value);
-		//return coreIlluminazione.setIlluminazione(idLamp, value);
+		mqttController.apiArrived(idLamp, value);
 	}
 }
