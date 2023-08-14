@@ -14,7 +14,7 @@ import it.SWEasabi.repositories.illuminazione.LampAnagraficaRepository;
 import it.SWEasabi.repositories.illuminazione.MisuratoreRepository;
 import it.SWEasabi.repositories.illuminazione.SensoreRepository;
 
-public class CoreIlluminazione {
+public class CoreIlluminazione implements IlluminationService {
 	
 	@Autowired
 	LampAnagraficaRepository lampRepo;
