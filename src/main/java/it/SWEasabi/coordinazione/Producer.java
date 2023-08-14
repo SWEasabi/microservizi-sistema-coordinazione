@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.springframework.stereotype.Service;
 
 import it.SWEasabi.core.CoreIlluminazione;
 import it.SWEasabi.modelli.payload.AutoPayload;
@@ -11,6 +12,7 @@ import it.SWEasabi.modelli.payload.ManualPayload;
 import it.SWEasabi.modelli.payload.PayloadQueue;
 import it.SWEasabi.modelli.payload.PayloadThread;
 
+@Service
 public class Producer
 {
 	CoreIlluminazione core;
@@ -18,9 +20,10 @@ public class Producer
     private MqttClient client;
     private final PayloadQueue payloadQueue;
     private final String topicLogging;
-    public Producer(PayloadQueue _payloadQueue)
+    public Producer(PayloadQueue _payloadQueue, CoreIlluminazione core)
     {
-        payloadQueue = _payloadQueue;
+        this.payloadQueue = _payloadQueue;
+        this.core=core;
         topicLogging = "logging";
     }
     public void setMqttClient(MqttClient _client)

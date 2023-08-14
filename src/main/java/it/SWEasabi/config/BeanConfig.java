@@ -39,19 +39,19 @@ public class BeanConfig {
 	PayloadQueue getPayloadQueue() {
 		return new PayloadQueue();
 	}
-	@Bean
+	/*@Bean
 	Producer getProducer() {
 		Producer producer = new Producer(getPayloadQueue());
 		return producer;
-	}
+	}*/
 	
-	@Bean
+	/*@Bean
 	Consumer getConsumer() {
 		Consumer consumer = new Consumer(getPayloadQueue());
 		return consumer;
-	}
+	}*/
 
-	@Bean
+	/*@Bean
 	MqttController getMqttController()
 	{
 		MqttController mqttController = new MqttController();
@@ -68,5 +68,5 @@ public class BeanConfig {
 		Thread consumerThread = new Thread(mqttController.getConsumer());
 		consumerThread.start();
 		return mqttController;
-	}
+	}*/
 }

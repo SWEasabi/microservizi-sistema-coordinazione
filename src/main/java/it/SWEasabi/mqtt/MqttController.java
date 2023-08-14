@@ -4,6 +4,7 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -11,7 +12,7 @@ import com.google.gson.JsonObject;
 import it.SWEasabi.coordinazione.Consumer;
 import it.SWEasabi.coordinazione.Producer;
 
-
+@Component
 public class MqttController implements MqttCallback
 {
     private MqttClient client;
@@ -19,22 +20,24 @@ public class MqttController implements MqttCallback
     private Consumer consumer;
     private Producer producer;
     
-    public MqttController(
-    		//Consumer _consumer, Producer _producer
-    		)
+    public MqttController(MqttClient client, Consumer consumer, Producer producer)
     {
-        //consumer = _consumer;
-        //producer = _producer;
+    	this.client=client;
+        this.consumer = consumer;
+        this.producer = producer;
+        
+        client.setCallback(this);
 
         // mqtt
         //setupMqtt();
 
         // run consumer
-        //producer.setMqttClient(client);
-        //consumer.setMqttClient(client);
-        //consumer.run();
+        producer.setMqttClient(client);
+        consumer.setMqttClient(client);
+        Thread consumerThread = new Thread(consumer);
+		consumerThread.start();
     }
-    public void StartConsumer() {
+    /*public void StartConsumer() {
     	consumer.run();
     }
     public void setConsumer(Consumer consumer) {
@@ -42,7 +45,7 @@ public class MqttController implements MqttCallback
     }
     public void setProducer(Producer producer) {
     	this.producer=producer;
-    }
+    }*/
     public void setMqttClient(MqttClient client) {
     	this.client=client;
     }

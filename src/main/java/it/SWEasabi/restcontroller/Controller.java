@@ -11,8 +11,11 @@ import it.SWEasabi.mqtt.MqttController;
 @RestController
 public class Controller {
 
-	@Autowired
-	MqttController mqttController;
+	private MqttController mqttController;
+	
+	public Controller(MqttController mqttController) {
+		this.mqttController=mqttController;
+	}
 	
 	@CrossOrigin (origins = "http://localhost:4200", maxAge = 3600)
 	@PostMapping("/setIlluminazione/{idLamp}/{value}")

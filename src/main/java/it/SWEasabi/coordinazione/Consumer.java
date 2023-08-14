@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.springframework.stereotype.Service;
 
 import it.SWEasabi.core.CoreIlluminazione;
 import it.SWEasabi.modelli.illuminazione.ModificaIlluminazione;
@@ -12,6 +13,7 @@ import it.SWEasabi.modelli.payload.Payload;
 import it.SWEasabi.modelli.payload.PayloadQueue;
 import it.SWEasabi.modelli.payload.PayloadThread;
 
+@Service
 public class Consumer implements Runnable
 {
     CoreIlluminazione coreIlluminazione;
@@ -19,9 +21,10 @@ public class Consumer implements Runnable
     private boolean stop = false;
     private MqttClient client;
     private final String topicLampioni, topicLogging;
-    public Consumer(PayloadQueue _payloadQueue)
+    public Consumer(PayloadQueue _payloadQueue, CoreIlluminazione core)
     {
         payloadQueue = _payloadQueue;
+        this.coreIlluminazione=core;
         topicLampioni = "lampioni_";
         topicLogging = "logging";
     }
@@ -29,9 +32,9 @@ public class Consumer implements Runnable
     {
         client = _client;
     }
-    public void setCore(CoreIlluminazione core) {
+    /*public void setCore(CoreIlluminazione core) {
     	this.coreIlluminazione=core;
-    }
+    }*/
     @Override
     public void run()
     {
