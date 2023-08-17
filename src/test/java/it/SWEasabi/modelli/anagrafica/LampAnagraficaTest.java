@@ -1,7 +1,5 @@
 package it.SWEasabi.modelli.anagrafica;
 
-import it.SWEasabi.modelli.anagrafica.LampAnagrafica;
-import it.SWEasabi.modelli.anagrafica.Misuratore;
 import org.junit.Before;
 import org.junit.Test;
 
