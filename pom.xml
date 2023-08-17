@@ -101,6 +101,7 @@
 						<exclude>it/SWEasabi/**/CoreIlluminazione.class</exclude>
 						<exclude>it/SWEasabi/**/Producer.class</exclude>
 						<exclude>it/SWEasabi/**/Consumer.class</exclude>
+						<exclude>it/SWEasabi/**/Controller.class</exclude>
 					</excludes>
 				</configuration>
 				<executions>
