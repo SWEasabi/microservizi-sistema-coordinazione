@@ -99,6 +99,8 @@
 				<configuration>
 					<excludes>
 						<exclude>com/SWEasabi/**/CoreIlluminazione.class</exclude>
+						<exclude>com/SWEasabi/**/Producer.class</exclude>
+						<exclude>com/SWEasabi/**/Consumer.class</exclude>
 					</excludes>
 				</configuration>
 				<executions>
