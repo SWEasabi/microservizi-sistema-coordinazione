@@ -2,7 +2,7 @@ package it.SWEasabi.modelli.payload;
 
 import it.SWEasabi.modelli.illuminazione.ModificaIlluminazione;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static org.junit.Assert.*;
 
 import java.util.List;
