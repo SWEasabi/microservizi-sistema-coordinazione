@@ -31,7 +31,7 @@ public class LocalCoreIlluminazione implements IlluminationService {
 			for(int i=1;i<11;++i) {
 				LampAnagrafica lamp = new LampAnagrafica();
 				lamp.setId(i);
-				
+				list.add(lamp);
 			}
 			return list;
 		}
@@ -43,5 +43,5 @@ public class LocalCoreIlluminazione implements IlluminationService {
 		if(sensorId>0) return new AreaAnagrafica();
 		return null;
 	}
-	
+
 }
