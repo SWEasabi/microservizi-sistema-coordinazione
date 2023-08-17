@@ -1,7 +1,7 @@
 package it.SWEasabi.modelli.payload;
 
 import it.SWEasabi.modelli.illuminazione.ModificaIlluminazione;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.Assert.*;
 
@@ -21,7 +21,7 @@ public class PayloadTest {
 
     Payload payload;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         payload = new TestPayload();
     }

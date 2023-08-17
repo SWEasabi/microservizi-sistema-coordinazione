@@ -1,6 +1,6 @@
 package it.SWEasabi.modelli.anagrafica;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;
@@ -13,7 +13,7 @@ public class MisuratoreTest {
     LampAnagrafica lampione;
     Misuratore misuratore_lampione;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         misuratore = new Misuratore();
 

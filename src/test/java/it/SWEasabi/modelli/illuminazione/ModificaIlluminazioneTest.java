@@ -1,6 +1,6 @@
 package it.SWEasabi.modelli.illuminazione;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;
@@ -9,7 +9,7 @@ public class ModificaIlluminazioneTest {
 
     ModificaIlluminazione mod;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         mod = new ModificaIlluminazione(0, 100);
     }

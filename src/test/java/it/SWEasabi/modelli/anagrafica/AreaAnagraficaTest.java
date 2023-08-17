@@ -1,6 +1,6 @@
 package it.SWEasabi.modelli.anagrafica;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;
@@ -10,7 +10,7 @@ public class AreaAnagraficaTest {
     AreaAnagrafica area;
     AreaAnagrafica area_auto;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         area = new AreaAnagrafica();
         area_auto = new AreaAnagrafica(1, "area_auto", true, 0, 100);
