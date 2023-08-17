@@ -14,7 +14,7 @@ public class LampAnagraficaTest {
     LampAnagrafica lampione100;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         misuratore = new Misuratore();
 
         lampione = new LampAnagrafica();

@@ -11,7 +11,7 @@ public class AreaAnagraficaTest {
     AreaAnagrafica area_auto;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         area = new AreaAnagrafica();
         area_auto = new AreaAnagrafica(1, "area_auto", true, 0, 100);
     }

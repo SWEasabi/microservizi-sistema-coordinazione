@@ -11,7 +11,7 @@ public class SensoreAnagraficaTest {
     SensoreAnagrafica sensore100;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         misuratore = new Misuratore();
 
         sensore = new SensoreAnagrafica();
