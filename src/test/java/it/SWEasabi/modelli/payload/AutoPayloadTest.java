@@ -8,6 +8,9 @@ import it.SWEasabi.modelli.illuminazione.ModificaIlluminazione;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class AutoPayloadTest {
@@ -39,6 +42,21 @@ public class AutoPayloadTest {
         autoPayload = new AutoPayload(2, 1, core);
         autoPayload.completePayload();
         assertEquals(PayloadStatus.Completed, autoPayload.getStatus());
+    }
+
+    @Test
+    public void testAnalyzeNoDiff() {
+        autoPayload = new AutoPayload(2, 1, core);
+        autoPayload.completePayload();
+        List<ModificaIlluminazione> expected = new ArrayList<ModificaIlluminazione>();
+        assertEquals(expected, autoPayload.analyze());
+    }
+
+    @Test
+    public void testAnalyze() {
+        autoPayload = new AutoPayload(3, 1, core);
+        autoPayload.completePayload();
+        assertEquals(10, autoPayload.analyze().size());
     }
 
 }

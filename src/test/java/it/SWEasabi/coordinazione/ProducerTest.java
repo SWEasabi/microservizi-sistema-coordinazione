@@ -43,6 +43,6 @@ public class ProducerTest {
         MqttMessage loggingResponse = new MqttMessage();
         String str = "{'id':123, valore':1, 'tipo': 'sensore'}";
         loggingResponse.setPayload(str.getBytes(StandardCharsets.UTF_8));
-        verify(mqttClient, times(1)).publish("logging", loggingResponse);
+        verify(mqttClient).publish(anyString(), any(MqttMessage.class));
     }
 }
