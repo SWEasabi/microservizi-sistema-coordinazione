@@ -40,7 +40,8 @@ public class LocalCoreIlluminazione implements IlluminationService {
 
 	@Override
 	public AreaAnagrafica getAreaFromSensorId(long sensorId) {
-		if(sensorId>0) return new AreaAnagrafica();
+		if(sensorId==1) return new AreaAnagrafica();
+		if(sensorId>1) return new AreaAnagrafica(1, "area", true, 10, 20);
 		return null;
 	}
 

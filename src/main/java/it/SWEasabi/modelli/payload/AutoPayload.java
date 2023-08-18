@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.SWEasabi.core.CoreIlluminazione;
+import it.SWEasabi.core.IlluminationService;
 import it.SWEasabi.modelli.anagrafica.AreaAnagrafica;
 import it.SWEasabi.modelli.anagrafica.LampAnagrafica;
 import it.SWEasabi.modelli.illuminazione.ModificaIlluminazione;
 
 public class AutoPayload extends Payload
 {
-    CoreIlluminazione coreIlluminazione;
+    IlluminationService coreIlluminazione;
     private long idSensore, statoSensore;
     private AreaAnagrafica area;
     private List<LampAnagrafica> lamps;
@@ -20,7 +21,7 @@ public class AutoPayload extends Payload
     public AreaAnagrafica getArea() { return area; }
     public List<LampAnagrafica> getLamps() { return lamps; }
 
-    public AutoPayload(long _idSensore, long _statoSensore, CoreIlluminazione coreIlluminazione)
+    public AutoPayload(long _idSensore, long _statoSensore, IlluminationService coreIlluminazione)
     {
         idSensore = _idSensore;
         statoSensore = _statoSensore;
