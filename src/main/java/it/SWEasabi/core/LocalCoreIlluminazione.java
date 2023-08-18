@@ -31,7 +31,7 @@ public class LocalCoreIlluminazione implements IlluminationService {
 			for(int i=1;i<11;++i) {
 				LampAnagrafica lamp = new LampAnagrafica();
 				lamp.setId(i);
-				
+				list.add(lamp);
 			}
 			return list;
 		}
@@ -40,8 +40,10 @@ public class LocalCoreIlluminazione implements IlluminationService {
 
 	@Override
 	public AreaAnagrafica getAreaFromSensorId(long sensorId) {
-		if(sensorId>0) return new AreaAnagrafica();
+		if(sensorId==1) return new AreaAnagrafica();
+		if(sensorId==2) return new AreaAnagrafica(1, "area", false, 10, 20);
+		if(sensorId>2) return new AreaAnagrafica(1, "area", true, 10, 20);
 		return null;
 	}
-	
+
 }
