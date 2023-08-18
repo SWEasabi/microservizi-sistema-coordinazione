@@ -24,6 +24,15 @@ public class AutoPayloadTest {
     }
 
     @Test
+    public void testGetters() {
+        autoPayload = new AutoPayload(3, 1, core);
+        assertEquals(3, autoPayload.getIdSensore());
+        assertEquals(1, autoPayload.getStatoSensore());
+        assertNull(autoPayload.getArea());
+        assertNull(autoPayload.getLamps());
+    }
+
+    @Test
     public void testAreaInvalid() {
         autoPayload = new AutoPayload(0, 1, core);
         autoPayload.completePayload();
