@@ -1,6 +1,7 @@
 package it.SWEasabi.modelli.anagrafica;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +18,7 @@ public class Misuratore {
 	//@SequenceGenerator(name = "measurerGenerator", initialValue = 13)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	@Column(name="area_id")
 	private long idarea;
 	private String tipo;
 	private double latitudine;

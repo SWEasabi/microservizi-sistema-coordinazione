@@ -2,11 +2,8 @@ package it.SWEasabi.modelli.anagrafica;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -15,15 +12,13 @@ import jakarta.persistence.Table;
 public class LampAnagrafica
 {
 	@Id
-	@Column(name="idmisuratore")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="misuratore_id")
 	private long id;
 	private int wattaggio;
 	private int luminosita;
 	
 	@OneToOne
-	@JoinColumn(name="idmisuratore")
-	@MapsId
+	@JoinColumn(name="misuratore_id")
 	private Misuratore misuratore;
 	
 	public Misuratore getMisuratore() {

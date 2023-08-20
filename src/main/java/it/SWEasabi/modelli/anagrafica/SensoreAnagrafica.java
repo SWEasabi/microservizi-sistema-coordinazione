@@ -4,7 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -13,13 +12,12 @@ import jakarta.persistence.Table;
 public class SensoreAnagrafica {
 
 	@Id
-	@Column(name="idmisuratore")
+	@Column(name="misuratore_id")
 	private long id;
 	private int raggio;
 	
 	@OneToOne
-	@JoinColumn(name="idmisuratore")
-	@MapsId
+	@JoinColumn(name="misuratore_id")
 	private Misuratore misuratore;
 	
 	public Misuratore getMisuratore() {
